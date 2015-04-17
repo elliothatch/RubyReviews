@@ -1,0 +1,21 @@
+
+
+Started GET "/" for 155.99.109.105 at 2015-04-17 20:23:43 +0000
+Cannot render console from 155.99.109.105! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/ellioth/.rvm/gems/ruby-2.2.1/gems/railties-4.2.1/lib/rails/templates/rails/welcome/index.html.erb (2.4ms)
+Completed 200 OK in 114ms (Views: 35.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/info/properties" for 155.99.109.105 at 2015-04-17 20:23:52 +0000
+Cannot render console from 155.99.109.105! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Rails::InfoController#properties as */*
+  Rendered /home/ellioth/.rvm/gems/ruby-2.2.1/gems/railties-4.2.1/lib/rails/templates/rails/info/properties.html.erb (0.6ms)
+Completed 200 OK in 176ms (Views: 68.2ms | ActiveRecord: 9.8ms)
+
+
+Started GET "/" for 155.99.109.105 at 2015-04-17 20:25:37 +0000
+Cannot render console from 155.99.109.105! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/ellioth/.rvm/gems/ruby-2.2.1/gems/railties-4.2.1/lib/rails/templates/rails/welcome/index.html.erb (8.8ms)
+Completed 200 OK in 99ms (Views: 21.3ms | ActiveRecord: 0.0ms)
