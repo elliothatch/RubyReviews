@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  timeCreated: 2015-04-17 22:11:07
+  body: MyText
+  rating: 1.5
+
+two:
+  timeCreated: 2015-04-17 22:11:07
+  body: MyText
+  rating: 1.5
