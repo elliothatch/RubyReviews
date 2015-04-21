@@ -24,17 +24,9 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.json
   def create
-    @review = Review.new(review_params)
-
-    respond_to do |format|
-      if @review.save
-        format.html { redirect_to @review, notice: 'Review was successfully created.' }
-        format.json { render :show, status: :created, location: @review }
-      else
-        format.html { render :new }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
-      end
-    end
+	@product = Product.find(params[:product_id])
+	@review = @product.reviews.create(review_params)
+	redirect_to product_path(@product)
   end
 
   # PATCH/PUT /reviews/1
@@ -56,7 +48,7 @@ class ReviewsController < ApplicationController
   def destroy
     @review.destroy
     respond_to do |format|
-      format.html { redirect_to reviews_url, notice: 'Review was successfully destroyed.' }
+      format.html { redirect_to product_path(Product.find(params[:product_id])), notice: 'Review was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +61,6 @@ class ReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:timeCreated, :body, :rating)
+      params.require(:review).permit(:author_id, :timeCreated, :body, :rating)
     end
 end

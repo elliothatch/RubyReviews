@@ -1,0 +1,26 @@
+<div class="jumbotron">
+	<div class="container">
+		<h1>Products & Reviews</h1>
+		<p>Write reviews and purchase products.</p>
+		<p><a class="btn btn-primary btn-lg" href="#" role="button">Sign up &raquo;</a></p>
+	</div>
+</div>
+
+<div class="container">
+	<h2>Top rated:</h2>
+	<table class="table table-striped">
+		<thead>
+			<tr><th>Product</th><th>Rating</th><th>Price</th></tr>
+		</thead>
+		<tbody>
+			<% @products.each do |product| %>
+				<tr>
+					<td><%= product.name %></td>
+					<td><%= product.price %></td>
+					<td><%= product.price %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+<%= link_to 'All Products', controller: 'products' %>
+</div>
