@@ -1,3 +1,4 @@
+<% if review.id != nil and review.author_id != nil %>
 <% author = User.find(review.author_id) %>
 <p>
 	<strong>Author:</strong>
@@ -12,3 +13,4 @@
 	<%= review.body %>
 	<%= link_to 'Destroy', product_review_path(@product, review), method: :delete, data: { confirm: 'Are you sure?' } %>
 </p>
+<% end %>

@@ -12,19 +12,6 @@
 
 <div class="container">
 	<h2>Top rated:</h2>
-	<table class="table table-striped">
-		<thead>
-			<tr><th>Product</th><th>Rating</th><th>Price</th></tr>
-		</thead>
-		<tbody>
-			<% @products.each do |product| %>
-				<tr>
-					<td><%= product.name %></td>
-					<td><%= product.price %></td>
-					<td><%= product.price %></td>
-			</tr>
-			<% end %>
-		</tbody>
-	</table>
+	<%= render :partial => "products/productTable", :locals => {:products => @products} %>
 <%= link_to 'All Products', controller: 'products' %>
 </div>

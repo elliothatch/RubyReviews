@@ -26,7 +26,12 @@ class ReviewsController < ApplicationController
   def create
 	@product = Product.find(params[:product_id])
 	@review = @product.reviews.create(review_params)
-	redirect_to product_path(@product)
+	@review.author_id = session[:user_id]
+	if @review.save
+		redirect_to product_path(@product)
+	else
+		render "/products/show"
+	end
   end
 
   # PATCH/PUT /reviews/1
@@ -61,6 +66,6 @@ class ReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:author_id, :timeCreated, :body, :rating)
+      params.require(:review).permit(:timeCreated, :body, :rating)
     end
 end
