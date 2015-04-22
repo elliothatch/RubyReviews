@@ -24,16 +24,13 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+   @user = User.new(user_params)
+    if @user.save
+      log_in @user
+      flash[:success] = "Welcome to the Sample App!"
+      redirect_to root_url
+    else
+      render 'new'
     end
   end
 
@@ -71,4 +68,12 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:email, :password, :name, :userType)
     end
+
+      def self.authenticate(login, password)  
+      user = User.find_by_login(login)  
+      if user && Digest::SHA256.hexdigest(password + user.salt) == user.hashed_password  
+        return user  
+      end  
+      false  
+    end  
 end

@@ -1,10 +1,14 @@
+ <% if logged_in? ==false%>
 <div class="jumbotron">
 	<div class="container">
 		<h1>Products & Reviews</h1>
 		<p>Write reviews and purchase products.</p>
-		<p><a class="btn btn-primary btn-lg" href="#" role="button">Sign up &raquo;</a></p>
+		<p><a class="btn btn-primary btn-lg" href="../users/new" role="button">Sign up &raquo;</a></p>
 	</div>
 </div>
+ 
+ <%end%>
+
 
 <div class="container">
 	<h2>Top rated:</h2>
