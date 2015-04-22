@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+
+<h1>
   <%= @product.name %>
-</p>
+</h1>
 
 <p>
   <strong>Description:</strong>
@@ -15,11 +15,17 @@
   <%= @product.price %>
 </p>
 
-<h2>Reviews:</h2>
+<h3>Reviews:</h2>
 <%= render @product.reviews %>
 
-<h2>Add a review:</h2>
-<%= render 'reviews/form' %>
+<h3>Add a review:</h2>
+<% if current_user != nil %>
+	<%= render 'reviews/form' %>
+<% else %>
+	<p>Log in to review this product.</p>
+<% end %>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
+<% if current_user != nil and current_user.userType == "admin" %>
+	<%= link_to 'Edit', edit_product_path(@product) %> |
+<% end %>
 <%= link_to 'Back', products_path %>

@@ -15,3 +15,14 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+
+var onReady = function() {
+	$('tr').click(function() {
+		var dataHref = $(this).data('href');
+		if(typeof dataHref !== 'undefined')
+			window.location = dataHref;
+	});
+};
+
+$(document).ready(onReady);
+$(document).on('page:load', onReady);

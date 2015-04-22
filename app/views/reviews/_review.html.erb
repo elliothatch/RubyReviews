@@ -1,16 +1,17 @@
 <% if review.id != nil and review.author_id != nil %>
 <% author = User.find(review.author_id) %>
-<p>
-	<strong>Author:</strong>
-	<%= author.name %>
-</p>
-<p>
-	<strong>Review:</strong>
-	<%= review.rating %>/5
-</p>
-<p>
-	<strong>Review:</strong>
-	<%= review.body %>
-	<%= link_to 'Destroy', product_review_path(@product, review), method: :delete, data: { confirm: 'Are you sure?' } %>
-</p>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title"><strong>Author:</strong> <%= author.name %></h3>
+	<h5 class="panel-title"><strong>Rating:</strong> <%= review.rating %>/5</h4>
+	</div>
+	<div class="panel-body">
+	<p>
+		<%= review.body %>
+	</p>
+		<% if current_user != nil and current_user.userType == "admin" %>
+			<%= link_to 'Destroy', product_review_path(@product, review), :class => 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %>
+		<% end %>
+	</div>
+</div>
 <% end %>

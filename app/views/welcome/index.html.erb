@@ -1,13 +1,18 @@
- <% if logged_in? ==false%>
 <div class="jumbotron">
 	<div class="container">
+		 <% if logged_in? ==false%>
 		<h1>Products & Reviews</h1>
 		<p>Write reviews and purchase products.</p>
-		<p><a class="btn btn-primary btn-lg" href="../users/new" role="button">Sign up &raquo;</a></p>
+		<p><a class="btn btn-primary btn-lg" href="/users/new" role="button">Sign up &raquo;</a></p>
+		<% else %>
+		<h1>Get Started</h1>
+		<p>View our products and write reviews!</p>
+		<p><a class="btn btn-primary btn-lg" href="/products" role="button">View products &raquo;</a></p>
+
+		<% end %>
 	</div>
 </div>
  
- <%end%>
 
 
 <div class="container">
