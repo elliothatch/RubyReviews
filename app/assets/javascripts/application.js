@@ -17,10 +17,60 @@
 //= require_tree .
 
 var onReady = function() {
+	//initialize table rows to be clickable
 	$('tr').click(function() {
 		var dataHref = $(this).data('href');
 		if(typeof dataHref !== 'undefined')
 			window.location = dataHref;
+	});
+
+	var emptyStarString = '&#9734;';
+	var filledStarString  = '&#9733;';
+	//initialize all star-rating classes
+	$('.star-rating').each(function () {
+		$(this).data('selected', 0);
+		for(var i = 1; i <= 5; i++)
+		{
+			var starSpan = $('<span></span>');
+			starSpan.addClass('star-rating-star');
+			starSpan.data('value', i);
+			starSpan.html(emptyStarString);
+			$(this).append(starSpan);
+		}
+	});
+	$('.star-rating-star').mouseover(function () {
+		//in
+		$(this).prevAll('.star-rating-star').each(function() {
+			$(this).html(filledStarString);
+		});
+		$(this).html(filledStarString);
+		$(this).nextAll('.star-rating-star').each(function() {
+			$(this).html(emptyStarString);
+		});
+	});
+	$('.star-rating').mouseout(function() {
+		var selection = $(this).data('selected');
+		$(this).children('.star-rating-star').each(function() {
+			if($(this).data('value') <= selection)
+			{
+				$(this).html(filledStarString);
+			}
+			else
+			{
+				$(this).html(emptyStarString);
+			}
+		});
+	});
+	$('.star-rating-star').click(function () {
+		$(this).parent().data('selected', $(this).data('value'));
+		$(this).parent().siblings('input[name="review[rating]"]').val($(this).data('value'));
+		$(this).prevAll('.star-rating-star').each(function() {
+			$(this).html(filledStarString);
+		});
+		$(this).html(filledStarString);
+		$(this).nextAll('.star-rating-star').each(function() {
+			$(this).html(emptyStarString);
+		});
 	});
 };
 

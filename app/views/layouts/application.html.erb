@@ -21,6 +21,9 @@
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				<li><%= link_to "Products", products_path %></li>
+				<% if logged_in? ==true and current_user.userType == 'admin'%>
+					<li><%= link_to "Add Product", new_product_path %></li>
+				<% end %>
 			</ul>
 
 				<% if logged_in? ==false%>

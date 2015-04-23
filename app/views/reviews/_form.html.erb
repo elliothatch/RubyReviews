@@ -16,7 +16,10 @@
   </div>
   <div class="field">
     <%= f.label :rating %><br>
-    <%= f.text_field :rating %>
+    <%= f.hidden_field :rating %>
+	<div class="star-rating">
+	</div>
+
   </div>
   <div class="actions">
     <%= f.submit %>
